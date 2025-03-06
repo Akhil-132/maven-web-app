@@ -1,0 +1,33 @@
+pipeline:
+  name: Build maven-web-app
+  identifier: Build_maven_web_app_1741250216067
+  projectIdentifier: default_project
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: githuball
+        repoName: maven-web-app
+        build: <+input>
